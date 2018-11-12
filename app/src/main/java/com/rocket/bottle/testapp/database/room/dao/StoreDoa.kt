@@ -13,7 +13,7 @@ interface StoreDoa {
     fun getAll(): List<Store>
 
     @Query("SELECT * FROM store WHERE storeID IN (:storeID)")
-    fun loadAllByIds(storeID: Int): Store
+    fun storeByIds(storeID: String): Store
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg store: Store)
