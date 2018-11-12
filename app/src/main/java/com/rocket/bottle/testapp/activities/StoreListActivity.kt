@@ -12,6 +12,9 @@ import com.rocket.bottle.testapp.view.model.StoreListVM
 import kotlinx.android.synthetic.main.activity_store_list.*
 import kotlinx.android.synthetic.main.content_store_list.*
 
+/**
+ * List of stores
+ * */
 class StoreListActivity : RootActivity(), StoreListener {
 
     companion object {

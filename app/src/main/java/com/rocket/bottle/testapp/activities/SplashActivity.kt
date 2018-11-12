@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.os.Handler
 import com.rocket.bottle.testapp.R
 
+/**
+ * This is an entry to the Application, It shows where I want to work :)
+ * */
 class SplashActivity : RootActivity() {
 
     private val mHandler = Handler()

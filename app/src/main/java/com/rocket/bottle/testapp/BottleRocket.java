@@ -11,10 +11,10 @@ public class BottleRocket extends Application {
     public void onCreate() {
         super.onCreate();
 
-        initializeUi();
+        initializeDb();
     }
 
-    private void initializeUi() {
+    private void initializeDb() {
         appDatabase = AppDatabase.Companion.getInstance(getApplicationContext());
     }
 

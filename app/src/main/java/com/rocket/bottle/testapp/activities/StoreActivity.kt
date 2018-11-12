@@ -14,6 +14,9 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_store.*
 import kotlinx.android.synthetic.main.content_store.*
 
+/**
+ * Detailed information about a store
+ * */
 class StoreActivity : AppCompatActivity() {
 
     companion object {

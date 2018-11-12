@@ -4,6 +4,9 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
 
+/**
+ * This should be extended by Activities which need to show following SnackBars
+ * */
 abstract class RootActivity : AppCompatActivity(), ActivityListener {
 
     protected lateinit var rootView: ViewGroup
