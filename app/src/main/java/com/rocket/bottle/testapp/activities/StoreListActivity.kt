@@ -3,6 +3,7 @@ package com.rocket.bottle.testapp.activities
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.view.View
 import com.rocket.bottle.testapp.R
 import com.rocket.bottle.testapp.adapters.StoreAdapter
 import com.rocket.bottle.testapp.adapters.StoreListener
@@ -32,8 +33,13 @@ class StoreListActivity : RootActivity(), StoreListener {
         storeListVM.mStoresList.observe(this, Observer { storeList ->
 
             storeList?.let {
-                val adapter = StoreAdapter(storeList, this)
-                recycler_view.adapter = adapter
+                if (storeList.isNotEmpty()) {
+
+                    loading_pb.visibility = View.GONE
+                    recycler_view.visibility = View.VISIBLE
+                    val adapter = StoreAdapter(storeList, this)
+                    recycler_view.adapter = adapter
+                }
             }
         })
 
