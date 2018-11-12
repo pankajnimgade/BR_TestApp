@@ -3,6 +3,7 @@ package com.rocket.bottle.testapp.view.model
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import android.content.Context
+import android.os.AsyncTask
 import com.google.gson.Gson
 import com.rocket.bottle.testapp.BottleRocket
 import com.rocket.bottle.testapp.activities.ActivityListener
@@ -35,6 +36,7 @@ class StoreListVM : ViewModel(), Listener {
 
     fun getStores(context: Context): MutableLiveData<List<Store>> {
         mStoreApiCall.callStores(context)
+        RetrieveStores(mStoresList).execute()
         return mStoresList
     }
 
@@ -57,4 +59,22 @@ class StoreListVM : ViewModel(), Listener {
     override fun onNoNetwork() {
         mActivityListener.onNoNetwork()
     }
+}
+
+class RetrieveStores(private val mStoreList: MutableLiveData<List<Store>>) : AsyncTask<Void, Void, List<Store>>() {
+
+    override fun doInBackground(vararg empty: Void): List<Store> {
+
+        val storeDoa = BottleRocket.getAppDatabase().storeDoa()
+        return storeDoa.getAll()
+    }
+
+    override fun onPostExecute(result: List<Store>?) {
+        super.onPostExecute(result)
+
+        result?.let {
+            mStoreList.postValue(result)
+        }
+    }
+
 }

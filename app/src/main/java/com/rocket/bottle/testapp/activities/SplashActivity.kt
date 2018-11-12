@@ -3,7 +3,6 @@ package com.rocket.bottle.testapp.activities
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
 import com.rocket.bottle.testapp.R
 
 class SplashActivity : RootActivity() {

@@ -59,6 +59,8 @@ class StoresApi(listener: Listener) : ApiCall(listener) {
                 }
             })
         }
+
+        isInProgress = true
     }
 
     private fun isNetworkAvailable(context: Context): Boolean {

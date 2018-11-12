@@ -3,8 +3,6 @@ package com.rocket.bottle.testapp.activities
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.util.Log
 import com.rocket.bottle.testapp.R
 import com.rocket.bottle.testapp.adapters.StoreAdapter
 import com.rocket.bottle.testapp.adapters.StoreListener
@@ -39,14 +37,9 @@ class StoreListActivity : RootActivity(), StoreListener {
             }
         })
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 
     override fun onStoreClick(store: Store) {
-        Log.d(TAG, ": ${store.name}")
         StoreActivity.startWithStoreId(this, store.storeID!!)
     }
 

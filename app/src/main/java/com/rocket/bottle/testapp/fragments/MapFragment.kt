@@ -54,9 +54,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         savedInstanceState?.let {
-            storeLatitude = savedInstanceState.getString(STORE_NAME_KEY, "28.068052")
-            storeLongitude = savedInstanceState.getString(STORE_NAME_KEY, "-82.573301")
             storeName = savedInstanceState.getString(STORE_NAME_KEY, "Macy's")
+            storeLatitude = savedInstanceState.getString(LATITUDE_KEY, "28.068052")
+            storeLongitude = savedInstanceState.getString(LONGITUDE_KEY, "-82.573301")
         }
     }
 

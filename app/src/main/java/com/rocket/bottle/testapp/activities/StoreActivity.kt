@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.webkit.URLUtil
 import com.rocket.bottle.testapp.R
 import com.rocket.bottle.testapp.fragments.MapFragment
 import com.rocket.bottle.testapp.view.model.StoreVM
@@ -29,7 +30,7 @@ class StoreActivity : AppCompatActivity() {
         }
     }
 
-    lateinit var storeVM: StoreVM
+    private lateinit var storeVM: StoreVM
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +49,10 @@ class StoreActivity : AppCompatActivity() {
         storeVM.getStore(storeId).observe(this, Observer { store ->
 
             toolbar.title = store?.name
-            Picasso.get().load(store?.storeLogoURL).into(store_log_iv)
+
+            if (URLUtil.isValidUrl(store?.storeLogoURL)) {
+                Picasso.get().load(store?.storeLogoURL).into(store_log_iv)
+            }
 
             address_tv.text = store?.address
             city_tv.text = store?.city
@@ -56,7 +60,7 @@ class StoreActivity : AppCompatActivity() {
             state_tv.text = store?.state
             phone_tv.text = "Contact: ${store?.phone}"
 
-            val fragment = MapFragment.newInstance(store?.name!!, store?.latitude!!, store?.longitude!!)
+            val fragment = MapFragment.newInstance(store?.name!!, store.latitude!!, store.longitude!!)
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.map_container, fragment).commit()
         })
